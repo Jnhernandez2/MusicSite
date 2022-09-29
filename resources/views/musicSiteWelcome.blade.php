@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>John Hernandez Music</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -18,6 +18,18 @@
             font-weight: 200;
             height: 100vh;
             margin: 0;
+            animation: fadeInAnimation ease 3s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .full-height {
@@ -56,39 +68,62 @@
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
+
         }
 
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .padBottom {
+            padding-bottom: 100px;
+        }
+
+        .padTop {
+            padding-top: 100px;
+        }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
-
     <div class="content">
+
+        <div class="padTop"></div>
+
+        <div>
+            <img id="profile" src="{{URL::asset('/images/JohnBlackAndWhitePortrait.png')}}" alt="John Hernandez" height="500" width="500">
+        </div>
+
         <div class="title m-b-md">
             John Hernandez
         </div>
 
         <div class="links">
-            <a href="https://laravel.com/docs">Bandcamp</a>
-            <a href="https://laracasts.com">Spotify</a>
+            <a href="https://johnhernandezsoundslike.bandcamp.com/">Bandcamp</a>
+            <a href="https://open.spotify.com/artist/0doCKVjriCi111XOBkRorK">Spotify</a>
+            <a href="mailto: jnhernandez2.0@gmail.com">Contact</a>
         </div>
+
+        <div class="padBottom"></div>
+
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function(){
+        $("a").hover(function(){
+            $(this).css("color", "yellow");
+        }, function() {
+            $(this).css("color", "#636b6f");
+        });
+
+        $("#profile").hover(function(){
+            $(this).attr('src','/images/JohnColorPortrait.png');
+        }, function() {
+            $(this).attr('src','/images/JohnBlackAndWhitePortrait.png');
+        });
+    });
+</script>
 </html>
+
